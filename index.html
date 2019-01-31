@@ -65,14 +65,18 @@
         .clear { clear: both; }
 
         div#project { margin: 0 auto; width: 100%; text-align: left; }
-        div#viewer { width: calc(100% - 220px); height: 700px; cursor: pointer; padding: 0px; margin-bottom: 20px; position: relative; overflow: hidden;
+        div#viewer { width: calc(100% - 260px); height: 800px; cursor: pointer; padding: 0px; margin-bottom: 20px; position: relative; overflow: hidden;
             background-color: #eee; border: 2px dashed #aaa; border-radius: 10px; }
         div#footer { margin: 0 auto; width: 100%; text-align: left; }
-        div#list { width: 210px; height: 700px; padding: 0px; position:relative;
-            background-color: #eee; border: 2px dashed #aaa; border-radius: 10px;
+        div#textureList { width: 260px; height: 800px; padding: 0px; position:relative;
+            background-color:#eee; border: 2px dashed #aaa; border-radius: 10px;
 	        overflow: auto; }
 
-        div#list div button {
+        div#projectList { width: 60%; height: 230px; position:relative;
+        background-color: #ffffff; border: 2px #aaa; border-radius: 10px;
+        overflow: auto; margin: auto;}
+
+        div#projectList button {
             background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #44c767), color-stop(1, #5cbf2a));
             background:-moz-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
             background:-webkit-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
@@ -84,7 +88,7 @@
             -moz-border-radius:12px;
             -webkit-border-radius:12px;
             border-radius:12px;
-            border:1px solid #18ab29;
+            border:1px solid #5faa67;
             display:inline-block;
             cursor:pointer;
             color:#ffffff;
@@ -95,9 +99,9 @@
             text-shadow:0px 1px 0px #2f6627;
             margin: 2px;
 	        /*height: 42px;*/height: 212px;
-            width: 170px;
+            width: 200px;
         }
-        div#list div button:hover {
+        div#projectList button:hover {
             background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5cbf2a), color-stop(1, #44c767));
             background:-moz-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
             background:-webkit-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
@@ -107,30 +111,26 @@
             filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cbf2a', endColorstr='#44c767',GradientType=0);
             background-color:#5cbf2a;
         }
-        div#list div button:active { position:relative; top:1px; }
+        div#projectList button:active { position:relative; top:1px; }
 
-        div#list div button div img { width: 150px; }
+        div#projectList button div img { width: 150px; }
     </style>
 
     <div class="panel-body">
-            <div class="checkbox-inline i-checks">
-                <button class="btn btn-success" type="button" id="addBtn" onclick="addBtn()"><i class="fa fa-video-camera"></i>&nbsp;&nbsp;<span class="bold">Record</span></button>
-            </div>
-            <div class="checkbox-inline i-checks">
-                <button class="btn btn-success" type="button" id="stopBtn" onclick="stopBtn()"><i class="fa fa-stop"></i>&nbsp;&nbsp;<span class="bold">Stop</span></button>
-            </div>
-            <div class="checkbox-inline i-checks">
-                <button class="btn btn-success" type="button" id="playBtn" onclick="playBtn()"><i class="fa fa-play"></i>&nbsp;&nbsp;<span class="bold">Play</span></button>  
-            </div>
-            <div class="checkbox-inline i-checks">
-                <button class="btn btn-danger" type="button" id="clearBtn" onclick="clearBtn()"><i class="fa fa-trash-o"></i>&nbsp;&nbsp;<span class="bold">Clear</span></button> 
-            </div>            
-    </div>
-    <div class="panel-body">
-        <div id = "texture_class_buttons" class="checkbox-inline i-checks">
+       
+        <div id="projectList" class="panel-body"></div>
+
+        <div style="margin-top: 30px;"></div>
+
+        <button class="btn btn-success" type="button" id="addBtn" onclick="addBtn()"><i class="fa fa-video-camera"></i>&nbsp;&nbsp;<span class="bold">Record</span></button>
+        <button class="btn btn-success" type="button" id="stopBtn" onclick="stopBtn()"><i class="fa fa-stop"></i>&nbsp;&nbsp;<span class="bold">Stop</span></button>
+        <button class="btn btn-success" type="button" id="playBtn" onclick="playBtn()"><i class="fa fa-play"></i>&nbsp;&nbsp;<span class="bold">Play</span></button>  
+        <button class="btn btn-danger" type="button" id="clearBtn" onclick="clearBtn()"><i class="fa fa-trash-o"></i>&nbsp;&nbsp;<span class="bold">Clear</span></button>        
+
+        <div style="margin-top: 30px;"></div>
+
+        <div id = "texture_class_buttons">
             <button class="btn btn-success" type="button" id="enableTextures" onclick="enableTextures()"><i class="fa fa-video-camera"></i>&nbsp;&nbsp;<span class="bold">Enable Textures</span></button>
-        </div>
-        <div id="image_pane" class="panel-body">
         </div>
         <!-- <img src='./Resource/materials/fancy/lego.jpg' id="lego" alt="Lego" width="150" height="150" onclick="onImageSelection(this);">-->
     </div>
@@ -142,7 +142,13 @@
                 {"path":"./Other Building/Resource/3D_View/_3D_ 168550/_3D_.svf","name":"Model 1"},
                 {"path":"./Big Building/Resource/3D/3D.svf","name":"Model 2"},
                 {"path":"./Resource/3D View/{3D} 960621/{3D}.svf","name":"Villa 3"},
-                {"path":"./b106166f-848f-5242-9c94-066ad2a5fe50_f2d/primaryGraphics.f2d","name":"A102 - Plans"},{"path":"./bb62d80e-b91f-d465-a80c-b6e5d3a59760_f2d/primaryGraphics.f2d","name":"A101 - Site Plan"},{"path":"./37527133-cbdd-d55f-d5ed-a4552f2019e5_f2d/primaryGraphics.f2d","name":"A105 - Elev./ Stair Sections"},{"path":"./e0102481-4ffe-5eac-2db1-782d07ed4987_f2d/primaryGraphics.f2d","name":"A103 - Elevations/Sections"},{"path":"./dcaf9359-22ae-23d3-0d6f-9c857252dad5_f2d/primaryGraphics.f2d","name":"A001 - Title Sheet"},{"path":"./7cdfa62a-5267-86b1-d8be-08eaacfd2290_f2d/primaryGraphics.f2d","name":"A104 - Elev./Sec./Det."}, 
+                // 2D
+                // {"path":"./b106166f-848f-5242-9c94-066ad2a5fe50_f2d/primaryGraphics.f2d","name":"A102 - Plans"},
+                // {"path":"./bb62d80e-b91f-d465-a80c-b6e5d3a59760_f2d/primaryGraphics.f2d","name":"A101 - Site Plan"},
+                // {"path":"./37527133-cbdd-d55f-d5ed-a4552f2019e5_f2d/primaryGraphics.f2d","name":"A105 - Elev./ Stair Sections"},
+                {"path":"./e0102481-4ffe-5eac-2db1-782d07ed4987_f2d/primaryGraphics.f2d","name":"A103 - Elevations/Sections"},
+                {"path":"./dcaf9359-22ae-23d3-0d6f-9c857252dad5_f2d/primaryGraphics.f2d","name":"A001 - Title Sheet"},
+                {"path":"./7cdfa62a-5267-86b1-d8be-08eaacfd2290_f2d/primaryGraphics.f2d","name":"A104 - Elev./Sec./Det."}, 
             ]
         ;
 
@@ -163,10 +169,10 @@
 				oViewer.loadModel (options.docid) ;
 
 				for ( var i =0 ; i < docs.length ; i++ ) {
-					var r =$('<div><button id="view_' + i + '">'
+					var r =$('<button id="view_' + i + '">'
 						+ docs [i].name
-						+ '<div><img id="img__' + i + '" src="' + docs [i].path + '.png"></div></button></div>') ;
-					$('#list').append (r) ;
+						+ '<div><img id="img__' + i + '" src="' + docs [i].path + '.png"></div></button>') ;
+					$('#projectList').append (r) ;
 					$('#view_' + i).click (function (e) {
 						e.stopPropagation () ;
                         oViewer.tearDown () ;
@@ -202,15 +208,15 @@
 
     function onImageSelection(img_selected) {
         // Make the non selected images normal
-        var all_images = $("#image_pane").children();
+        var all_images = $("#textureList").children();
         for(var i=0; i < all_images.length; i++){
-            all_images[i].height = "75";
-            all_images[i].width = "75";
+            all_images[i].height = "100";
+            all_images[i].width = "100";
         };
 
         // Make the selected image big
-        img_selected.height = "100";
-        img_selected.width = "100";
+        img_selected.height = "125";
+        img_selected.width = "125";
 
         // Change the texture source.
         currentTextureImg = img_selected.id;
@@ -226,12 +232,12 @@
 
             current_texture_class = btn_clicked.id;
             // First clean the existing texture images.
-            $("#image_pane").empty();
+            $("#textureList").empty();
 
             texture_classes[btn_clicked.id].forEach(img_file_path => {
                 var fileNameWOExtension = img_file_path.slice(img_file_path.lastIndexOf('/')+1, img_file_path.lastIndexOf('.'))
-                var img_html = "<img src='{0}' id='{1}' alt='{2}' width='75' height='75' hspace='2' vspace='2' onclick='onImageSelection(this);'>".format(img_file_path, fileNameWOExtension, fileNameWOExtension);
-                $("#image_pane").append(img_html);
+                var img_html = "<img src='{0}' id='{1}' alt='{2}' width='100' height='100' hspace='2' vspace='2' onclick='onImageSelection(this);'>".format(img_file_path, fileNameWOExtension, fileNameWOExtension);
+                $("#textureList").append(img_html);
             });
 
             // Remove the viewer selection callback. Add it again on image selection.
@@ -401,7 +407,7 @@
         <hr />
         <div>
             <div id="viewer" class="left"></div>
-            <div id="list" class="right"></div>
+            <div id="textureList" class="right"></div>
         </div>
     </div>
 

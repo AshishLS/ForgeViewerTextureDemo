@@ -1,0 +1,125 @@
+<template name="cvp_results_CameraTweeen">
+    <li class="divider"></li>
+    <li class="{{liclass}}">
+
+        <div class="panel panel-default">
+            <div class="section-content" style="font-size: 1.2rem;">
+                <a data-toggle="collapse" data-parent="#accordion1" href="#collapseThree" style="color:black;">
+                    <i class="icon-width-24 fa fa-laptop fa-lg"></i>
+                    <span class="menu-label">simulationHub Studio</span>
+                    <span class="fa fa-lg arrow"></span>
+                </a>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="panel-group" id="accordion2">
+
+                        {{>cvp_results_walkthrough}}
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion2" href="#collapseThreeTwo">Camera Tween
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThreeTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="checkbox-inline i-checks">
+                                        <button class="btn btn-success" type="button" id="CTaddBtn">
+                                            <i class="fa fa-plus"></i>&nbsp;&nbsp;
+                                            <span class="bold">Add</span>
+                                        </button>
+                                    </div>
+                                    <div class="checkbox-inline i-checks">
+                                        <button class="btn btn-success" type="button" id="CTplayBtn">
+                                            <i class="fa fa-play"></i>&nbsp;&nbsp;
+                                            <span class="bold">Play</span>
+                                        </button>
+                                    </div>
+                                    <div class="checkbox-inline i-checks">
+                                        <button class="btn btn-success" type="button" id="CTstopBtn">
+                                            <i class="fa fa-stop"></i>&nbsp;&nbsp;
+                                            <span class="bold">Pause</span>
+                                        </button>
+                                    </div>
+                                    <div class="m-t-lg level-1">
+                                        <div class="checkbox-inline i-checks">
+                                            <button class="btn btn-success" type="button" id="CTclearBtn">
+                                                <i class="fa fa-trash-o"></i>&nbsp;&nbsp;
+                                                <span class="bold">Clear</span>
+                                            </button>
+                                        </div>
+                                        <div class="checkbox-inline i-checks">
+                                            <button class="btn btn-success" type="button" id="CTsaveBtn">
+                                                <i class="fa fa-save"></i>&nbsp;&nbsp;
+                                                <span class="bold">Save</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="m-t-lg level-1">
+                                        <table id="keyFrameTable" class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr. No.</th>
+                                                    <th>Description</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{#each keyFrameList}} {{> selectedKeyFrameRow}} {{/each}}
+                                            </tbody>
+                                        </table>
+                                        <button class="btn-material btn-material-accent btn-material-raised " id="CTSaveImagesBtn" style="display:none;">SaveImages</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{#if flowLinesAndVector}} {{>CT_Along_FlowLine}} {{/if}}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</template>
+
+<template name="selectedKeyFrameRow">
+    <tr>
+        <td class="col-lg-3">{{Sr}}</td>
+        <td class="col-lg-10">
+            <input type='text' placeholder="{{Description}}">
+        </td>
+        <td class="text-center" id={{ID}}>
+            <i class="material-icons">delete_forever</i>
+        </td>
+    </tr>
+</template>
+
+<!-- <div class="panel panel-default">  liclass='active' navClass='in'
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion2" href="#collapseThreeOne">Walk through Animation
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThreeOne" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="checkbox-inline i-checks">
+                                            <button class="btn-material btn-material-accent btn-material-raised " id="addBtn">Record</button>
+                                        </div>
+                                        <div class="checkbox-inline i-checks">
+                                            <button class="btn-material btn-material-accent btn-material-raised " id="stopBtn">Stop</button>
+                                        </div>
+                                        <div class="checkbox-inline i-checks">
+                                            <button class="btn-material btn-material-accent btn-material-raised " id="playBtn">Play</button>
+                                        </div>
+                                        <div class="m-t-lg level-1">
+                                            <div class="checkbox-inline i-checks">
+                                                <button class="btn-material btn-material-accent btn-material-raised " id="clearBtn">Clear</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->

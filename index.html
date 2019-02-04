@@ -455,20 +455,25 @@
         this.container.style.resize = "auto";
 
         // this is where we should place the content of our panel
-        var div = document.createElement('div');
-        div.style.margin = '20px';
-        div.innerText = "Texel Density  ";
-        this.container.appendChild(div);
-        // and may also append child elements...
+        var div = document.getElementById("TexelSelectDiv")
+        if(div == null){
+            div = document.createElement('div');
+            div.id = "TexelSelectDiv";
+            div.style.margin = '20px';
+            div.innerText = "Texel Density  ";
 
-        var html = [
-        "<select style='color:grey;' id='texelSelect' onchange='TexelSettingChanged(this)'>",
-        "<option value='sparse'>sparse</option>",
-        "<option value='medium'>medium</option>",
-        "<option value='dense'>dense</option>",
-        "</select>"
-        ].join('\n')
-        $(div).append(html);
+            var html = [
+            "<select style='color:grey;' id='texelSelect' onchange='TexelSettingChanged(this)'>",
+            "<option value='sparse'>sparse</option>",
+            "<option value='medium'>medium</option>",
+            "<option value='dense'>dense</option>",
+            "</select>"
+            ].join('\n')
+            $(div).append(html);
+        }
+        
+        this.container.appendChild(div);
+        // and may also append child elements...        
 
        // With JQuery
         $("#ex9").slider({
@@ -503,6 +508,8 @@
                 <div id = "texture_class_buttons">
                     <button class="btn btn-success" type="button" id="enableTextures" onclick="enableTextures()"><i class="fa fa-video-camera"></i>&nbsp;&nbsp;<span class="bold">Enable Textures</span></button>
                 </div>
+
+                <div style="margin-top: 30px;"></div>
             </div>
         </div>
     </div>

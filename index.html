@@ -24,6 +24,7 @@
     <script src="./viewer3D.min.js"></script> -->
     <!-- <script src="./viewer3D.js"></script> -->
     <!-- <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/three.min.js"></script> -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://developer.api.autodesk.com/derivativeservice/v2/viewers/4.0/style.min.css?v=6.0" type="text/css">
     <script src="https://developer.api.autodesk.com/derivativeservice/v2/viewers/viewer3D.min.js?v=6.0"></script>
     <script src="https://developer.api.autodesk.com/derivativeservice/v2/viewers/4.0/wgs.js?v=v6.0"></script>
@@ -36,7 +37,8 @@
     <script type="text/javascript" src="./CameraTween/walkthrough.js"></script>
     <script type="text/javascript" src="./TextureWork/textureUtility.js"></script>
 
-    <script src="./Extensions/ModelTransformer/Viewing.Extension.ModelTransformer.js"></script>
+    <script type="text/javascript" src="./Extensions/Viewing.Extension.Markup3D/Viewing.Extension.Markup3D.min.js"></script>
+    <script type="text/javascript" src="./Extensions/Viewing.Extension.Markup2D/Viewing.Extension.Markup2D.min.js"></script>
 
 
     <!-- Our scripts -->
@@ -156,7 +158,7 @@
                     oViewer.fitToView (true) ;
                     setTimeout (function () { oViewer.autocam.setHomeViewFrom (oViewer.navigation.getCamera ()) ; }, 1000) ;
                 }) ;
-				oViewer.loadModel (options.docid) ;
+                oViewer.loadModel (options.docid) ;
 
 				for ( var i =0 ; i < docs.length ; i++ ) {
 					var r =$('<button id="view_' + i + '">'
@@ -187,6 +189,23 @@
 			}) ;
         }) ;
 
+        var addLeaderLine= function () {
+         // Custom Selection of Forge Viewer On
+        // NOP_VIEWER.addEventListener(
+        // Autodesk.Viewing.AGGREGATE_SELECTION_CHANGED_EVENT,
+        // onSelectionForMarkup);
+        //NOP_VIEWER.loadExtension('Viewing.Extension.Markup3D');
+        NOP_VIEWER.loadExtension('Viewing.Extension.Markup3D');
+    }
+
+    function onSelectionForMarkup(event) {
+
+        if (event.selections && event.selections.length) {
+            console.log("Inside selection change - Ashish") 
+
+        }
+    }
+
     MyAwesomePanel.prototype = Object.create(Autodesk.Viewing.UI.DockingPanel.prototype);
     MyAwesomePanel.prototype.constructor = MyAwesomePanel;
 
@@ -208,6 +227,7 @@
                 <button class="btn btn-success" type="button" id="stopBtn" onclick="stopBtn()"><i class="fa fa-stop"></i>&nbsp;&nbsp;<span class="bold">Stop</span></button>
                 <button class="btn btn-success" type="button" id="playBtn" onclick="playBtn()"><i class="fa fa-play"></i>&nbsp;&nbsp;<span class="bold">Play</span></button>  
                 <button class="btn btn-danger" type="button" id="clearBtn" onclick="clearBtn()"><i class="fa fa-trash-o"></i>&nbsp;&nbsp;<span class="bold">Clear</span></button>        
+                <button class="btn btn-success" type="button" id="leaderLineBtn" onclick="addLeaderLine()"><i class="fa fa-trash-o"></i>&nbsp;&nbsp;<span class="bold">Leaders</span></button>        
 
                 <div style="margin-top: 30px;"></div>
 
